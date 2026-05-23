@@ -5,7 +5,9 @@
         Height="640" Width="1000" WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Background="{StaticResource ColorBackground}"
-        FontFamily="{StaticResource AppFont}">
+        FontFamily="{StaticResource AppFont}"
+        TextOptions.TextFormattingMode="Display"
+        xml:lang="vi-VN">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid Margin="10" Background="{StaticResource ColorBackground}">
             <Grid.RowDefinitions>

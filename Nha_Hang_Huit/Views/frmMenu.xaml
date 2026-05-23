@@ -4,7 +4,9 @@
         Title="G&#x1ECD;i M&#x00F3;n - Nh&#x00E0; H&#x00E0;ng HUIT"
         Height="550" Width="900" WindowStartupLocation="CenterScreen"
         Background="{StaticResource ColorBackground}"
-        FontFamily="{StaticResource AppFont}">
+        FontFamily="{StaticResource AppFont}"
+        TextOptions.TextFormattingMode="Display"
+        xml:lang="vi-VN">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid Margin="10">
             <Grid.RowDefinitions>
