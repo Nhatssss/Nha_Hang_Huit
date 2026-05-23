@@ -1,0 +1,29 @@
+# IDE
+*.suo
+*.user
+*.sln.docstates
+.vs/
+*.csproj.user
+
+# Build
+bin/
+obj/
+Debug/
+Release/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# NuGet
+packages/
+*.nupkg
+
+# Database files
+*.mdf
+*.ldf
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

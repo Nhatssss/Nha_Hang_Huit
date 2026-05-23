@@ -1,0 +1,172 @@
+<Window x:Class="Nha_Hang_Huit.Views.frmAdminBaoCao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="B&#x00E1;o C&#x00E1;o Doanh Thu - Nh&#x00E0; H&#x00E0;ng HUIT"
+        Height="720" Width="1100" WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="{StaticResource ColorBackground}"
+        FontFamily="{StaticResource AppFont}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="{StaticResource ColorPrimary}" CornerRadius="8" Padding="15" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="B&#x00C1;O C&#x00C1;O DOANH THU" FontSize="22" FontWeight="Bold"
+                               Foreground="{StaticResource ColorAccent}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="T&#x1ED5;ng h&#x1EE3;p t&#x1EA5;t c&#x1EA3; c&#x00E1;c ca l&#x00E0;m vi&#x1EC7;c" FontSize="12"
+                               Foreground="#FFD7CCC8" HorizontalAlignment="Center" Margin="0,3,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Summary Bar -->
+            <Border Grid.Row="1" Background="{StaticResource ColorSurface}" CornerRadius="8" Padding="15" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Background="{StaticResource ColorGoldLight}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="T&#x1ED5;ng s&#x1ED1; ca" FontSize="12" Foreground="{StaticResource ColorTextSecondary}"/>
+                            <TextBlock x:Name="lblTongSoCa" Text="0" FontSize="28" FontWeight="Bold"
+                                       Foreground="{StaticResource ColorPrimary}" Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="1" Background="{StaticResource ColorGoldLight}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="Doanh thu tr&#x01B0;&#x1EDB;c gi&#x1EA3;m" FontSize="12" Foreground="{StaticResource ColorTextSecondary}"/>
+                            <TextBlock x:Name="lblTongDoanhThu" Text="0 VND" FontSize="20" FontWeight="Bold"
+                                       Foreground="{StaticResource ColorPrimary}" Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="2" Background="{StaticResource ColorGoldLight}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="T&#x1ED5;ng gi&#x1EA3;m gi&#x00E1;" FontSize="12" Foreground="{StaticResource ColorTextSecondary}"/>
+                            <TextBlock x:Name="lblTongGiamGia" Text="0 VND" FontSize="20" FontWeight="Bold"
+                                       Foreground="{StaticResource ColorWarning}" Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="3" Background="{StaticResource ColorPrimary}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="DOANH THU TH&#x1EF0;C NH&#x1EAC;N" FontSize="12" Foreground="#FFD7CCC8"/>
+                            <TextBlock x:Name="lblDoanhThuThucNhan" Text="0 VND" FontSize="22" FontWeight="Bold"
+                                       Foreground="{StaticResource ColorAccent}" Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Top items aggregated -->
+            <Border Grid.Row="2" Background="{StaticResource ColorSurface}" CornerRadius="8" Padding="15" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="&#x1F3C6; TOP 10 M&#x00D3;N B&#x00C1;N CH&#x1EA0;Y (T&#x1ED5;ng h&#x1EE3;p t&#x1EA5;t c&#x1EA3; c&#x00E1;c ca)"
+                               FontSize="15" FontWeight="Bold" Foreground="{StaticResource ColorPrimary}" Margin="0,0,0,8"/>
+                    <ListBox Grid.Row="1" x:Name="lstTopMonTong" BorderThickness="1" BorderBrush="#E0E0E0"
+                             FontSize="13" Height="160">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="4" Padding="6" Margin="1" Background="{StaticResource ColorSurface}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="140"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding STT}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding TenMonAn}" Margin="5,0"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding SoLuong, StringFormat={}{0} ph&#x1EA7;n}"
+                                                   HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding DoanhThu, StringFormat={}{0:N0} VND}"
+                                                   HorizontalAlignment="Right" Foreground="{StaticResource ColorAccent}" FontWeight="Bold"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <!-- All closed shifts -->
+            <TextBlock Grid.Row="3" Text="&#x1F4CB; DANH S&#x00C1;CH C&#x00C1;C CA &#x0110;&#x00C3; &#x0110;&#x00D3;NG"
+                       FontSize="15" FontWeight="Bold" Foreground="{StaticResource ColorPrimary}" Margin="0,0,0,5"/>
+            <Border Grid.Row="4" Background="{StaticResource ColorSurface}" CornerRadius="8" Padding="5">
+                <DataGrid x:Name="dgCaDaDong" AutoGenerateColumns="False" CanUserAddRows="False"
+                          IsReadOnly="True" BorderThickness="0" FontSize="13"
+                          RowHeight="36" AlternatingRowBackground="#FFF8E1"
+                          SelectionMode="Single" SelectionUnit="FullRow"
+                          MouseDoubleClick="dgCaDaDong_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="M&#x00E3; Ca" Binding="{Binding MaCa}" Width="70"
+                                            FontWeight="Bold" Foreground="{StaticResource ColorPrimary}"/>
+                        <DataGridTextColumn Header="Nh&#x00E2;n vi&#x00EA;n" Binding="{Binding NhanVien}" Width="130"/>
+                        <DataGridTextColumn Header="B&#x1EAF;t &#x0111;&#x1EA7;u" Binding="{Binding GioBatDau, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="150"/>
+                        <DataGridTextColumn Header="K&#x1EBF;t th&#x00FA;c" Binding="{Binding GioKetThuc, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="150"/>
+                        <DataGridTextColumn Header="H&#x00F3;a &#x0111;on" Binding="{Binding TongSoHoaDon}" Width="80">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Tr&#x01B0;&#x1EDB;c gi&#x1EA3;m" Binding="{Binding TongDoanhThuTruocGiamGia, StringFormat={}{0:N0}}" Width="120">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Gi&#x1EA3;m gi&#x00E1;" Binding="{Binding TongTienGiamGia, StringFormat={}{0:N0}}" Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Th&#x1EF1;c nh&#x1EAD;n" Binding="{Binding TongDoanhThuThucNhan, StringFormat={}{0:N0}}" Width="120" FontWeight="Bold" Foreground="{StaticResource ColorAccent}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Kh&#x00E1;ch m&#x1EDB;i" Binding="{Binding SoKhachMoi}" Width="80">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+            <!-- Footer -->
+            <Border Grid.Row="5" Background="{StaticResource ColorSurface}" CornerRadius="8" Padding="10" Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="btnXuatTongBaoCao" Content="Xu&#x1EA5;t b&#x00E1;o c&#x00E1;o t&#x1ED5;ng h&#x1EE3;p"
+                            Style="{StaticResource BtnAccent}" Height="34" FontSize="12" Padding="12,6"
+                            Click="btnXuatTongBaoCao_Click"/>
+                    <Button x:Name="btnDong" Content="&#x0110;&#x00F3;ng" Style="{StaticResource BtnPrimary}"
+                            Height="34" FontSize="12" Padding="20,6" Margin="10,0,0,0"
+                            Click="btnDong_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>
